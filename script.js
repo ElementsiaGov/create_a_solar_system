@@ -25,8 +25,18 @@ const COLORS = [
 ];
 
 const PLANET_NAMES = [
-  "Aeloria", "Verdon", "Lunara", "Zephyrion", "Solstis", "Lyrius", "Nexara", "Terra", "Celestia", "Orion", "Astoria"
+  "Aeloria", "Verdon", "Lunara", "Zephyrion", "Solstis", "Lyrius", "Nexara", "Terra", "Celestia", "Orion",
+  "Astoria", "Eclipsa", "Vespera", "Astrid", "Maridian", "Serenia", "Galaxar", "Novastra", "Stellara", "Cosmara",
+  "Astrovia", "Celestius", "Orbitalis", "Stellaris", "Nebula", "Andromeda", "Pulsar", "Supernova", "Quasar", "Sentinel",
+  "Helios", "Chronos", "Elysium", "Phobos", "Titan", "Luna", "Marsis", "Venusia", "Jupiter", "Saturna",
+  "Neptuna", "Uranus", "Pluton", "Lyra", "Virgo", "Leo", "Draco", "Aquarius", "Taurus", "Cetus",
+  "Gemini", "Perseus", "Cassiopeia", "Pegasus", "Orionis", "Hercules", "Andromedae", "Cepheus", "Cygnus", "Aquila",
+  "Pisces", "Sagittarius", "Scorpius", "Libra", "Capricornus", "Aries", "Corvus", "Crux", "Hydra", "Canis",
+  "Auriga", "Carina", "Centaurus", "Pavo", "Ursa", "Phoenix", "Pictor", "Triangulum", "Volans", "Vulpecula",
+  "Indus", "Delphinus", "Eridanus", "Fornax", "Horologium", "Lacerta", "Musca", "Norma", "Octans", "Sculptor",
+  "Telescopium", "Ara", "Circinus", "Coma", "Monoceros", "Reticulum", "Tucana", "Apus", "Dorado", "Grus"
 ];
+
 
 const SOLAR_SYSTEM_NAMES = [
   "Solaris", "Stellara", "Cosmostrum", "Galaxia", "Astralis", "Nebulon", "Astrovia", "Celestius", "Orbitalis", "Stellaris",
