@@ -40,7 +40,16 @@ const PLANET_NAMES = [
 
 const SOLAR_SYSTEM_NAMES = [
   "Solaris", "Stellara", "Cosmostrum", "Galaxia", "Astralis", "Nebulon", "Astrovia", "Celestius", "Orbitalis", "Stellaris",
-  "Nova", "Voyager", "Infinity", "Nebula", "Eclipse", "Andromeda", "Pulsar", "Supernova", "Quasar", "Sentinel"
+  "Nova", "Voyager", "Infinity", "Nebula", "Eclipse", "Andromeda", "Pulsar", "Supernova", "Quasar", "Sentinel",
+  "Horizon", "Aurelia", "Elysia", "Luminara", "Veritas", "Solara", "Celesta", "Astronova", "Nebulosa", "Orionis",
+  "Serenita", "Aurora", "Voyage", "Eterna", "Stardust", "Galacton", "Eclipticon", "Nebularis", "Astranova", "Stella",
+  "Solex", "Astroflare", "Novastra", "Cosmara", "Celestalon", "Orbix", "Cosmodyne", "Nebulina", "Astrolis", "Stellaria",
+  "Astroluna", "Solstice", "Horizonis", "Aurorium", "Eclipsara", "Luminarion", "Orbitum", "Spheria", "Stellarena", "Stardyne",
+  "Cosmosis", "Spectron", "Eclipticon", "Stardale", "Solitas", "Voyagis", "Stellario", "Astralisia", "Nebulus", "Eclipsio",
+  "Celestalis", "Astronex", "Solarix", "Voyagenix", "Stellion", "Cosmosis", "Orbitalix", "Galaxus", "Stellarix", "Nebulion",
+  "Horizium", "Luminex", "Astrovira", "Celestara", "Nebulex", "Stellearis", "Orbitalara", "Solarastra", "Nebulana", "Astrax",
+  "Stellarion", "Eclipsarix", "Astrovaria", "Celestaris", "Stellarus", "Lunaris", "Stellarastra", "Orbitalara", "Nebulus",
+  "Solarsis", "Astrosis", "Galaxara", "Stellex", "Astrion", "Orbitara", "Celestara", "Stelluna", "Nebulon", "Solstar"
 ];
 
 function generateRandomColor() {
