@@ -1,21 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Random Solar System Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN -->
+    <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1101785167233826846/1205816432965853214/AXIOM.png?ex=65d9bf10&is=65c74a10&hm=c34a43b36fa44623dee26b465986a16fd378c5ff0314c546379a957fed2367b2&=&format=webp&quality=lossless&width=662&height=662">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url("https://media.discordapp.net/attachments/1101785167233826846/1205811211967528980/R.png?ex=65d9ba33&is=65c74533&hm=b00b4b3d88707b2849898272da1443837082be67d8ca57b3834c607e064e62ab&=&format=webp&quality=lossless&width=1177&height=662");
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: 0 10px; /* Add margin left and right */
+            position: relative;
+            animation: floatUp 0.5s ease forwards; /* Animation */
+            opacity: 0; /* Initially hide */
+            transform: translateY(20px); /* Initially lower position */
+        }
+        @keyframes floatUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 50px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #76557e;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: ease-in-out 0.3s;
+            font-weight: bold;
+        }
+        button[type="submit"]:hover {
+            background-color: #573f5d;
+            padding: 15px;
+            font-weight: bold;
+        }
+        .pass {
+            display: none;
+        }
+        .forgot-password {
+            color: rgb(0, 0, 0);
+            text-decoration: none;
+            cursor: pointer;
+            transition: ease-in-out 0.3s;
+        }
+        .forgot-password:hover {
+            padding: 5px;
+        }
+        .device-selection {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+        }
+        .device-icon {
+            font-size: 30px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .device-icon:hover {
+            transform: scale(1.2);
+        }
+        .desktop-icon {
+            color: #303336; /* blue color */
+        }
+        .mobile-icon {
+            color: #303336; /* green color */
+        }
+        .discord-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #bbb; /* Lighter color */
+            transition: ease-in-out 0.2s;
+        }
+        .discord-icon:hover {
+            transform: scale(1.2);
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <canvas id="solarSystemCanvas"></canvas>
-    <button id="generateButton">Generate Solar System</button>
-    <button id="saveButton">Save Image</button>
-    <div class="tooltip" id="tooltip"></div>
-  </div>
-  <div class="footer-bar">
-    <p class="footer-text">&copy; 2023 Elementsia. All rights reserved. | Random Solar System Generator</p>
-  </div>
-  <script src="script.js"></script>
+    <div class="login-container">
+      <h2>Login</h2>
+      <p>Hi there! This webpage has been blocked for all Aros Elyuim Members by Elementsia, <a href="why.html" id="learn-more-link">learn why this happened</a></p>
+        <form id="loginForm" onsubmit="return validateLogin()">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for="pin">PIN:</label><br>
+            <input type="password" id="pin" name="pin" required><br><br>
+
+            <div class="device-selection">
+                <i class="fas fa-desktop device-icon desktop-icon" onclick="selectDevice('desktop')"></i>
+                <i class="fas fa-mobile-alt device-icon mobile-icon" onclick="selectDevice('mobile')"></i>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+        <p class="pass" id="forgotPasswordText">If you don't have an account name or password, or if you've forgotten your password, please check your direct messages for the information sent by Elementsia, or make a submission in the Axiom submission page.</p>
+        <p class="forgot-password" id="forgotPasswordLink">Forgot Password?</p>
+    </div>
+    
+    <a href="https://discord.gg/3Jca45mffG" class="discord-icon"><i class="fab fa-discord fa-2x"></i></a> <!-- Font Awesome Discord icon -->
+    
+    <script>
+        var userAccounts = {
+            "Shantara": "7532",
+            "El": "2421",
+            "EARLY ACCESS ACCOUNT 03": "5328",
+            "EARLY ACCESS ACCOUNT 02": "7972",
+        };
+
+        var passParagraph = document.getElementById("forgotPasswordText");
+        var passLink = document.getElementById("forgotPasswordLink");
+
+        passLink.addEventListener("click", function() {
+            passParagraph.style.display = passParagraph.style.display === "none" ? "block" : "none";
+        });
+
+        function selectDevice(device) {
+            document.querySelectorAll('.device-icon').forEach(icon => {
+                icon.classList.remove('desktop-icon');
+                icon.classList.remove('mobile-icon');
+            });
+
+            if (device === 'desktop') {
+                document.querySelector('.desktop-icon').classList.add('desktop-icon');
+            } else if (device === 'mobile') {
+                document.querySelector('.mobile-icon').classList.add('mobile-icon');
+            }
+        }
+
+        function validateLogin() {
+            var username = document.getElementById("username").value;
+            var pin = document.getElementById("pin").value;
+            var selectedDevice = document.querySelector('.desktop-icon') ? 'desktop' : 'mobile';
+
+            if (userAccounts.hasOwnProperty(username)) {
+                if (userAccounts[username] === pin) {
+                    if (selectedDevice === "desktop") {
+                        window.location.href = "main.html";
+                    } else if (selectedDevice === "mobile") {
+                        window.location.href = "main.html";
+                    }
+                    return false;
+                } else {
+                    alert("Incorrect PIN. Please try again.");
+                    return false;
+                }
+            } else {
+                alert("Username not found.");
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>
